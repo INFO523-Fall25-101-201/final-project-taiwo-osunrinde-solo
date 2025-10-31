@@ -1,11 +1,13 @@
 ---
-title: "Proposal title"
+title: "Cancer Prediction in patients using Convolutional Neural Network, Logistic Regression and Decison Tree Algorithms"
 subtitle: "Proposal"
 author: 
-  - name: "Team Name - Team member 1, Team member 2,..."
+  - name: "Taiwo Osunrinde."
     affiliations:
       - name: "College of Information Science, University of Arizona"
-description: "Project description"
+description: "The goal of this project is to use machine learning Algorithms
+such as CNN, Logistic Regression and Decison Trees to prectict the presence
+of cancer in some patients "
 format:
   html:
     code-tools: true
@@ -23,6 +25,7 @@ jupyter: python3
 #| label: load-pkgs
 #| message: false
 import numpy as np
+import pandas as pd
 ```
 
 ## Dataset
@@ -30,16 +33,31 @@ import numpy as np
 ```{python}
 #| label: load-dataset
 #| message: false
+data=pd.read('data/The_Cancer_data_1500_V2.csv')
 ```
 
 A brief description of your dataset including its provenance, dimensions, etc. as well as the reason why you chose this dataset.
+This data contain medical information for 1500 patients with the aim of
+using this information to determine the presence of cancer in these
+patients. The reason for selecting this data is because it is structured to 
+model real life medical cancer situation.
 
 Make sure to load the data and use inline code for some of this information.
 
 ## Questions
 
 The two questions you want to answer.
+1. The factors contributing to cancer developments in this patients
+2. The model that accurately predict the presence of cancer in this patients
+
 
 ## Analysis plan
 
 -   A plan for answering each of the questions including the variables involved, variables to be created (if any), external data to be merged in (if any).
+1. Data clleaning
+2. Exploratory data Analysis
+3. Data imputation
+4. Feature importance and Engineering
+5. Split data into train, test and validation
+6. Model development (CNN, Logistic Regression and Decision Tree)
+7. Model testing and validation
