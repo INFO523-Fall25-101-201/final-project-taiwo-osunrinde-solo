@@ -1,167 +1,161 @@
 ---
-title: "Project title"
-subtitle: "INFO 523 - Summer 2025 - Final Project"
-author: "Author names"
+title: "Cancer Prediction in patients using Convolutional Neural Network, Logistic Regression, and Random Forest Algorithms"
+author: "Taiwo Osunrinde (Solo)"
+
 title-slide-attributes:
   data-background-image: images/watercolour_sys02_img34_teacup-ocean.jpg
-  data-background-size: stretch
-  data-background-opacity: "0.7"
+  data-background-size: cover
+  data-background-opacity: "0.6"
   data-slide-number: none
+
 format:
   revealjs:
-    theme:  ['data/customtheming.scss']
-  
+    theme: 
+      - default
+      - data/customtheming.scss   # custom theme now loads correctly
+    slide-number: true
+    transition: slide
+    center: false
+    footer: "INFO-523 | Cancer Prediction"
+    width: 1200            
+    height: 1300            
+    margin: 0.05            
+
 editor: visual
 jupyter: python3
+
 execute:
   echo: false
 ---
 
-```{python}
-#| label: load-packages
-#| include: false
+## Introduction
 
-# Load packages here
+### Project: Cancer Prediction using CNN, LR, and RF Machine Learning Algorithm
+
+-   **Objective:** To build a machine learning model that accurately predicts the presence of cancer in patients.
+-   **Key Questions Addressed:**
+    1.  What are the factors contributing to cancer development in these patients?
+    2.  Which of these models will accurately predict the presence of cancer in these patients?
+    3.  
+
+## Data Overview & Setup
+
+### Dataset: Cancer Prediction dataset
+
+-   **Source:** Kaggle (https://www.kaggle.com/datasets/rabieelkharoua/cancer-prediction-dataset)
+-   **Features:** Age, Gender, BMI, Smoking, GeneticRisk, PhysicalActivity, AlcoholIntake, CancerHistory.
+-   **Target Variable:** `Diagnosis`.
+
+## Methodology
+1. Data cleaning
+2. Exploratory data Analysis
+3. Feature importance and Engineering
+4. Split data into train, test, and validation
+5. Model development (CNN, Logistic Regression, and Random Forests)
+6. Model testing and validation
+
+```{python,data-v-align="top"}
+#| label: load-pkgs
+#| message: false
+import numpy as np
 import pandas as pd
-import seaborn as sns
-
-```
-
-```{python}
-#| label: setup
-#| include: false
-#| 
-# Set up plot theme and figure resolution
-sns.set_theme(style="whitegrid")
-sns.set_context("notebook", font_scale=1.1)
-
 import matplotlib.pyplot as plt
-plt.rcParams['figure.dpi'] = 300
-plt.rcParams['savefig.dpi'] = 300
-plt.rcParams['figure.figsize'] = (6, 6 * 0.618)
+import seaborn as sns
+import plotly.express as px
+#| label: load-dataset
+#| message: false
+data = pd.read_csv('data/The_Cancer_data_1500_V2.csv')
+data.head(5)
 ```
 
-```{python}
-#| label: load-data
-#| include: false
-# Load data in Python
-mtcars = sns.load_dataset('mpg').dropna()  # mtcars dataset is similar to the mpg dataset from seaborn
-mtcars['speed'] = mtcars['horsepower'] / mtcars['weight']
+------------------------------------------------------------------------
 
-penguins = sns.load_dataset('penguins').dropna()
-```
+## Exploratory Data Analysis
 
-# Using Quarto for presentations
+### Histogram Plot
 
-## Quarto
+| Histogram distribution of each data | 
+|:----------------------------------:|
+| ![](images/data_distribution.png) | 
+| *Observation: The data is evenly distributed and cleaned. No further preprocessing is required* | 
 
--   The presentation is created using the Quarto CLI
 
--   `##` sets the start of a new slide
+------------------------------------------------------------------------
 
-## Layouts
+### Impacts of each variable on cancer detection
 
-You can use plain text
+#### Alcohol Intake and Physical Activity
 
-::: columns
-::: {.column width="40%"}
--   or bullet points[^1]
-:::
+|------------------------------------------------------------------------|
+| ![](images/alcohol_physical_activity_scatter.png)  |
 
-::: {.column width="60%"}
-or in two columns
-:::
-:::
+Impact: The scatter plot above shows that physical activity and alcohol intake cause cancer. However, it is not clear to what extent since there is no clear distinction on the plot. We will investigate this further. \|
 
-[^1]: And add footnotes
+#### Alcohol Intake, Physical Activity, and Genetic Risk
 
--   like
+|------------------------------------------------------------------------|
+| ![](images/alcohol_physical_activity_genetic_scatter.png)  |
 
--   this
+Impact: From the plot above, it can be noted that people with high genetic risk are prone to cancer even if they don't take alcohol or are physically fit. People with low genetic risk have a smaller chance of getting cancer. \|
 
-## Code
+#### Smoking and Diagnosis
 
-```{python}
-from sklearn.linear_model import LinearRegression
-import statsmodels.api as sm
-import pandas as pd
+|------------------------------------------------------------------------|
+| ![](images/smoking_diagnosis.png)  |
 
-# Fit a linear regression model
-X = mtcars[['speed']]
-y = mtcars['mpg']
-model = LinearRegression().fit(X, y)
+Impact: This indicates that the number of people who smoke and have cancer and the people who smoke and don't have cancer are almost the same. Also, the number of people who don't smoke but have cancer is higher than the number of people who smoke and have cancer. Hence, we can't conclude if smoking is a direct indicator of cancer. \|
 
-# Summary of the model
-X2 = sm.add_constant(X)
-est = sm.OLS(y, X2)
-est2 = est.fit()
-print(est2.summary())
-```
 
-## Plots
+#### Gender and Diagnosis
 
-```{python}
-penguins['species'] = penguins['species'].apply(lambda x: "Adelie" if x == "Adelie" else "Other")
-sns.scatterplot(data=penguins, x='flipper_length_mm', y='body_mass_g', hue='species')
-plt.show()
-```
+|------------------------------------------------------------------------|
+| ![](images/gender_diagnosis.png)  |
 
-## Plot and text
+Impact: The plot above implies that about 1/3 of the female population has cancer, while the number of males with or without cancer is equal. \|
 
-::: columns
-::: {.column width="50%"}
--   Some text
 
--   goes here
-:::
+## Modeling Approach
 
-::: {.column width="50%"}
-```{python}
-#| warning: false
-#| fig.width: 5.5
-fig, ax = plt.subplots(figsize=(5.5, 5.5 * 0.618))
-sns.boxplot(data=penguins, x='bill_length_mm', y='species', hue='species', ax=ax)
-plt.show()
-```
-:::
-:::
+- Split data to train/test (80/20)
+- Split train data for training and validation (80/20)
+  -   **Goal:** To ensure the test data is not exposed/leaked during training.
+-   **Model Chosen:** **Random Forest Regressor and Logistic Regressor (Soft voting classifier approach)** (highest predictive power).
+-   **Evaluation:** Accuracy, Precision, Recall, and f1_score.
 
-# A new section...
+## Voting Classifier (Random Forest and Logistic Regressor) Performance
 
-## Tables
+### Model Accuracy 
 
-If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,
+| | Metric | Value | 
+| :--- | :--- | 
+| **Accuracy** | **0.93** |
+| **Precision** | **0.92**  | 
+| **Recall** | **0.89**  | 
+| **f1_score** | **0.90** | 
 
-```{python}
-penguins.head().to_html()
-```
+## Top features
+The model identified the most critical features impacting price:
+1.  **Age** (Engineered Feature)
+2.  **Smoking**
+3.  **GeneticRisk**
+4.  **BWI**
+5.  **Gender**
 
-## Images
+------------------------------------------------------------------------
 
-![Image credit: Danielle Navarro, Percolate.](images/watercolour_sys02_img34_teacup-ocean.png){fig-align="center" width="500"}
 
-## Math Expressions {.smaller}
+*Technical Detail:* A model pipeline was created to use two estimators via an approach called **Voting Classifier**. The trained model was serialized and saved as `cancer_model.pkl`.  This was later deployed via a web dashboard.
 
-You can write LaTeX math expressions inside a pair of dollar signs, e.g. \$\\alpha+\\beta\$ renders $\alpha + \beta$. You can use the display style with double dollar signs:
+## Deployment
+* **Website:** https://cancerapps.streamlit.app/
 
-```         
-$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$
-```
+## Conclusion: Summary of Findings
+The analysis showed that Genetic risk, BWi, gender, physical activity, and smoking all contribute to whether a patient will have cancer or not. The three models used for training performed well on the data.  There was no overfitting or underfitting noticed. Combining two models is also a good way to ensure the model is not overfitting.
 
-$$
-\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i
-$$
+## Recommendations
 
-Limitations:
+1.  More data needs to be utilized. 1500 samples are not sufficient to build a good-performing model.
+2.  More factors also need to be considered.
+3.  Cancer Images should be used alongside the tabular data when training  the convolutional neural network model.
 
-1.  The source code of a LaTeX math expression must be in one line, unless it is inside a pair of double dollar signs, in which case the starting `$$` must appear in the very beginning of a line, followed immediately by a non-space character, and the ending `$$` must be at the end of a line, led by a non-space character;
-
-2.  There should not be spaces after the opening `$` or before the closing `$`.
-
-# Wrap up
-
-## Feeling adventurous?
-
--   You are welcomed to use the default styling of the slides. In fact, that's what I expect majority of you will do. You will differentiate yourself with the content of your presentation.
-
--   But some of you might want to play around with slide styling. Some solutions for this can be found at https://quarto.org/docs/presentations/revealjs.
+## Thanks for listening
