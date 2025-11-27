@@ -66,8 +66,6 @@ import plotly.express as px
 #| message: false
 data = pd.read_csv('data/The_Cancer_data_1500_V2.csv')
 data.head(5)
-data.info()
-
 ```
 
 ------------------------------------------------------------------------
