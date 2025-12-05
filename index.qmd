@@ -1,11 +1,13 @@
 ---
-title: "Project Title"
+title: "Cancer Prediction in patients using Convolutional Neural Network, Logistic Regression, and Random Forests Algorithms"
 subtitle: "INFO 523 - Final Project"
 author: 
-  - name: "Team name - Team member 1, Team member 2,..."
+  - name: "Taiwo Osunrinde"
     affiliations:
       - name: "College of Information Science, University of Arizona"
-description: "Project description"
+description: "The goal of this project is to use machine learning Algorithms
+such as CNN, Logistic Regression, and Random forests to predict the presence
+of cancer in some patients. "
 format:
    html:
     code-tools: true
@@ -19,5 +21,8 @@ jupyter: python3
 ---
 
 ## Abstract
+Cancer is a group of diseases characterized by the uncontrolled growth and spread of abnormal cells, which can invade nearby tissues and metastasize to distant parts of the body. It remains one of the leading causes of death worldwide, with no definitive cure currently available. While researchers and medical oncologists continue to pursue curative therapies, early detection remains one of the most effective strategies for improving patient outcomes, as it enables timely intervention such as early chemotherapy.
 
-Add project abstract here.
+This project focuses on developing a machine learning (ML) model capable of predicting the presence of cancer in patients using simulated hospital data. Three algorithms were explored: Convolutional Neural Networks (CNN), Logistic Regression (LR), and Random Forest (RF). The LR and RF models were integrated into a soft voting classifier pipeline, while a four-layer neural network was constructed for the CNN model.
+
+The dataset was initially split into 80% training and 20% testing sets, with the training portion further divided into training and validation subsets (80/20). Both the CNN and voting classifier models were trained and evaluated, with the voting classifier achieving the best performance: 93% accuracy, 92% precision, 89% recall, and an F1-score of 90%. The best-performing model was then retrained using the full training dataset. Finally, an interactive web dashboard was developed to deploy the model, providing medical practitioners with a user-friendly tool to assist in determining whether a patient may be diagnosed with cancer.
