@@ -54,18 +54,17 @@ execute:
 5. Model development (CNN, Logistic Regression, and Random Forests)
 6. Model testing and validation
 
-```{python,data-v-align="top"}
-#| label: load-pkgs
-#| message: false
+```{python, data-v-align="top", label="load-pkgs", message=false}
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.express as px
-#| message: false
+
 data = pd.read_csv('data/The_Cancer_data_1500_V2.csv')
 data.head(5)
 ```
+
 
 ------------------------------------------------------------------------
 
