@@ -72,6 +72,7 @@ The model identified the most critical features impacting price:
 
 ## Deployment
 * **Website:** https://cancerapps.streamlit.app/
+* **Presentation website:**https://info523-fall25-101-201.github.io/final-project-taiwo-osunrinde-solo/proposal.html
 
 ## Deliverables
 
