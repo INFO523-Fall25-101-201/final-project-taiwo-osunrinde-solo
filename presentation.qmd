@@ -77,7 +77,7 @@ data.head(5)
 | Histogram distribution of each data | 
 |:----------------------------------:|
 | ![](images/data_distribution.png) | 
-| *Observation: The data is evenly distributed and cleaned. No further preprocessing is required* | 
+| *Observation: The data is evenly distributed and cleaned. No further preprocessing is required to clean the data* | 
 
 
 ------------------------------------------------------------------------
