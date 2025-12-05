@@ -62,7 +62,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.express as px
-#| label: load-dataset
 #| message: false
 data = pd.read_csv('data/The_Cancer_data_1500_V2.csv')
 data.head(5)
