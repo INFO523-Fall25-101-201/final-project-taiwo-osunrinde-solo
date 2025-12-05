@@ -36,7 +36,7 @@ execute:
 -   **Key Questions Addressed:**
     1.  What are the factors contributing to cancer development in these patients?
     2.  Which of these models will accurately predict the presence of cancer in these patients?
-    3.  
+
 
 ## Data Overview & Setup
 
@@ -48,7 +48,7 @@ execute:
 
 ## Methodology
 1. Data cleaning
-2. Exploratory data Analysis
+2. Exploratory Data Analysis
 3. Feature importance and Engineering
 4. Split data into train, test, and validation
 5. Model development (CNN, Logistic Regression, and Random Forests)
@@ -87,7 +87,7 @@ data.head(5)
 
 ![](images/alcohol_physical_activity_scatter.png){width=85%}
 
-Impact: The scatter plot above shows a relationship but no clear separation.
+Impact: The scatter plot above shows a relationship, but there is no clear separation.
 
 ---
 
@@ -95,7 +95,7 @@ Impact: The scatter plot above shows a relationship but no clear separation.
 
 ![](images/alcohol_physical_activity_genetic_scatter.png){width=85%}
 
-Impact: High genetic risk shows strong association with cancer.
+Impact: High genetic risk shows a strong association with cancer.
 
 ---
 
