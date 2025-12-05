@@ -93,7 +93,7 @@ Impact: The scatter plot above shows a relationship, but there is no clear separ
 
 ### Alcohol Intake, Physical Activity, and Genetic Risk
 
-![](images/alcohol_physical_activity_genetic_scatter.png){width=85%}
+![](images/alcohol_physical_activity__genetic_scatter.png){width=85%}
 
 Impact: High genetic risk shows a strong association with cancer.
 
