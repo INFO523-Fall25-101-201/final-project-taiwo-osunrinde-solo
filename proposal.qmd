@@ -56,8 +56,9 @@ The two questions you want to answer.
 -   A plan for answering each of the questions including the variables involved, variables to be created (if any), external data to be merged in (if any).
 1. Data cleaning
 2. Exploratory data Analysis
-3. Data imputation
+3. Data imputation. The imputation method that will be used depends on the data behavior (normal or skewed)
 4. Feature importance and Engineering
 5. Split data into train, test, and validation
-6. Model development (CNN, Logistic Regression, and Random Forests)
+6. Model development (CNN, Logistic Regression, and Random Forests). The logistic regression and random forests algoritms will be ensembled together using the voting classifier.
 7. Model testing and validation
+8. Model performance (accuracy, precision, recall, F1-score) will be used to evaluate the performance of the model
