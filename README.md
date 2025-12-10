@@ -34,6 +34,19 @@ To build a machine learning model that accurately predicts the presence of **can
 
 ---
 
+## Project Libraries
+1. pandas
+2. numpy
+3. sklearn
+4. tensorflow
+5. keras
+6. scipy
+7. plotly
+8. seaborn
+9. matplotlib
+
+---
+
 ## Dataset
 
 * **Source:** Kaggle(https://www.kaggle.com/datasets/rabieelkharoua/cancer-prediction-dataset )
