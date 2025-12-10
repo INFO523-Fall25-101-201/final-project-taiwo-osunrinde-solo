@@ -7,7 +7,7 @@ author:
       - name: "College of Information Science, University of Arizona."
 description: "The goal of this project is to use machine learning Algorithms
 such as CNN, Logistic Regression, and Random forests to predict the presence
-of cancer in some patients. "
+of cancer in some patients. Ideally, CNN are used for images, however, they can be used to train medical tabular data. Although CNNs are primarily for image data, I want to experiment with 1D convolutions on tabular medical data to see if local feature interactions can improve predictive performance compared to traditional models."
 format:
   html:
     code-tools: true
