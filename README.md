@@ -38,6 +38,19 @@ To build a machine learning model that accurately predicts the presence of **can
 
 ---
 
+## Project Libraries
+1. pandas
+2. numpy
+3. sklearn
+4. tensorflow
+5. keras
+6. scipy
+7. plotly
+8. seaborn
+9. matplotlib
+
+---
+
 ## Dataset
 
 * **Source:** Kaggle(<https://www.kaggle.com/datasets/rabieelkharoua/cancer-prediction-dataset> )
@@ -73,6 +86,8 @@ The Random Forest algorithm captures non-linear relationships and interactions b
 | **Recall** | **0.89**  |
 | **f1_score** | **0.90** |
 
+---
+
 ### Model Interpretation
 
 Accuracy (0.93): The model correctly predicts cancer presence/absence 93% of the time.
@@ -83,6 +98,7 @@ Recall (0.89): It detects 89% of actual cancer cases (some false negatives).
 
 F1 Score (0.90): This indicate a good balance between precision and recall.
 
+---
 ### Top features
 
 The model identified the most critical features impacting price:
@@ -103,11 +119,17 @@ The model identified the most critical features impacting price:
 
 The analysis showed that Genetic risk, BWi, gender, physical activity, and smoking all contribute to whether a patient will have cancer or not. The three models used for training performed well on the data.  There was no overfitting or underfitting noticed. Combining two models is also a good way to ensure the model is not overfitting.
 
+---
+
 ## Recommendations
 
 1. More data needs to be utilized. 1500 samples are not sufficient to build a good-performing model.
 2. More factors also need to be considered.
 3. Cancer Images should be used alongside the tabular data when training  the convolutional neural network model.
+=======
+* **Website:** https://cancerapps.streamlit.app/
+* **Presentation website:** https://info523-fall25-101-201.github.io/final-project-taiwo-osunrinde-solo/proposal.html
+
 
 ## Deliverables
 
