@@ -87,7 +87,7 @@ data.head(5)
 
 ![](images/alcohol_physical_activity_scatter.png){width=85%}
 
-Impact: The scatter plot above indicates that alcohol and physical activity does not have a clear relationship with cancer diagnosis in patient. Hence, I investigated further by introducing the genetic variable.
+Impact: The scatter plot above shows a relationship, but there is no clear separation.
 
 ---
 
